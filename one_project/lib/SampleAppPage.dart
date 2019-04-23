@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // https://flutterchina.club/flutter-for-ios/#views
-// flutter中文网示例工程
+// flutter中文网示例
 
 // 初始化一个SampleAppPage
 class SampleAppPage extends StatefulWidget {
@@ -46,7 +46,10 @@ class _SampleAppPageState extends State<SampleAppPage> {
 
       _typeOfNumber();
       _typeOfString();
-
+      _typeOfBool();
+      _typeOfList();
+      _typeOfMaps();
+      _typeOfOthers();
   }
 
   // Number类型
@@ -130,11 +133,93 @@ class _SampleAppPageState extends State<SampleAppPage> {
 
       const validConstString = '$aConstNum $aConstBool $aConstString';
       // const invalidConstString = '$aNum $aBool $aString $aConstList';
+      print(validConstString);
+  }
 
+  // Bool类型
+  _typeOfBool() {
+    print("**********Bool类型**********");
+    // Dart 的布尔类型名字是bool，可能的取值包括”ture“ 和 ”false“。
+    // ”bool“ 类型是 compile-time 的常量。
+    // Dart 是强bool 类型检查，只有bool 类型的值是”true“ 才被认为是true。
 
+    // eg:
+    // var name = 'Bob';
+    // if (name) {
+      // 在别的语言中会进入这个判断,但是Dart会报异常,难受
+      // 在production mode 中上面的代码将不会输出任何东西，因为name != true。
+      // checked mode 中上面的代码将会出现异常，因为name不是bool 类型。
+      // print('You have a name!');
+      // }
+  }
 
+  // List类型
+  _typeOfList() {
+    print("**********List类型**********");
+    // 在 Dart　语言中，具有一系列相同类型的数据被称为 List 对象。
+    // Dart List 对象类似JavaScript 语言的 array 对象
+    var list = [1, 2, 3];
+    // Dart list 对象的第一个元素的位置是0，最后个元素的索引是list.lenght - 1
+    // 这里感觉和别的语言没区别
+    list.insert(3, 4);
+    print(list);
+  }
+
+  // Maps类型
+  _typeOfMaps() {
+    print("**********Maps类型**********");
+    // Map　类型将keys 和 values 关联在一起。
+    // keys 和 values 可以是任意类型的对象。
+    // 像其它支持Map 的编程语言一样，Map 的 key 必须是唯一的。
+
+    // 字典 也是没区别 key可以为int类型  更方便了
+    // Map 对象的定义:
+    var gifts = {
+    // Keys      Values
+    'first' : 'partridge',
+    'second': 'turtledoves',
+    'fifth' : 'golden rings'
+    };
+
+    var nobleGases = {
+      // Keys  Values
+      2 :   'helium',
+      10:   'neon',
+      18:   'argon',
+      };
+    // 也可以使用Map 对象的构造函数 Map() 来创建Map 对象:
+    var gift = new Map();
+    gift['first'] = 'partridge';
+    gift['second'] = 'turtledoves';
+    gift['fifth'] = 'golden rings';
+
+    var nobleGase = new Map();
+    nobleGase[2] = 'helium';
+    nobleGase[10] = 'neon';
+    nobleGase[18] = 'argon';
+
+    // 添加新的key-value
+    gift['fouth'] = 'hahah';
+
+    // 操作和字典基本没区别
+
+    print(gift);
+    print(nobleGase);
 
   }
+
+  // 其他类型
+  _typeOfOthers() {
+    // Runes类型
+    // 可以点击 Runes 关键字到  String.dart文件中查看具体用法
+
+    // Symbols 类型
+    // 一般程序中不会使用Symbol类型,Symbol类型跟在#后面.
+    // 可以点击 Runes 关键字到  String.dart文件中查看具体用法
+  }
+
+
+
 
 
 // 这里是page的布局
