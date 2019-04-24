@@ -74,6 +74,7 @@ class FounctionsPage extends StatefulWidget {
 
   // Actions
   _fountionsAction() {
+
     print('--------------');
 
     var _nobleGase = {
@@ -164,11 +165,105 @@ class FounctionsPage extends StatefulWidget {
       return result;
     }
 
-    print(saying('yzj', 'niubi'));
-    print(saying('you', 'niubi', '雷霆真悲剧'));
-    print(saying('you', 'niubi', null, '是啊'));
-    print(saying('you', 'niubi', '雷霆真悲剧', '是啊'));
+    print(saying('yzj', 'niubi'));//yzj says niubi with a 开拓者牛批
+    print(saying('you', 'niubi', '雷霆真悲剧'));//you says niubi with a 雷霆真悲剧
+    print(saying('you', 'niubi', null, '是啊'));//you says niubi in 是啊 mark   
+    print(saying('you', 'niubi', '雷霆真悲剧', '是啊'));//you says niubi with a 雷霆真悲剧 in 是啊 mark
     
+    // 也可以将lists 及maps类型作为默认值
+    // 如下面的例子:
+    doStuff({List<int> list:const[1,2,3,4],
+     Map<String, String> gifts: const{'one':'cat',
+                                      'two': 'dog',
+                                      'three':'fish'}}) {
+      print('list:  $list');
+      print('gifts: $gifts');
+    }
+
+    // Use the default values for both parameters.
+    doStuff();//输错默认值
+
+    // Use the default values for the "gifts" parameter.
+    doStuff(list:[4,5,6]);//list输出[4,5,6],gifls输出默认值
+  
+    // Don't use the default values for either parameter.
+    doStuff(list: null, gifts: null);//输出 null null
+
+
+    /// main() 函数
+    /// 所有的APP都必须有一个main()函数,作为APP的入口
+    /// main()函数返回void类型,并且包含了List<String>类型的参数
+
+    /// main()函数不包含参数的例子:
+
+    /// void main() {
+    /// querySelector("#sample_text_id")
+    /// ..text = "Click me!"
+    /// ..onClick.listen(reverseText);
+    /// }
+    
+    /// main()函数包含参数的例子:
+    /// void main(List<String> arguments) {
+    ///  print(arguments);
+
+    ///  assert(arguments.length == 2);
+    ///  assert(int.parse(arguments[0]) == 1);
+    ///  assert(arguments[1] == 'test');
+    ///  }
+    
+    /// 传递函数给函数
+    /// 可以将函数作为参数传递给另一个函数,大部分语言都可以,也没什么不同的
+    printElement(element) {
+      print(element);
+    }
+
+    var listF = [1, 2, 3];
+
+    // Pass printElement as a parameter.
+    listF.forEach(printElement);
+
+    // 也可以将函数赋值给一个变量,例如:
+    var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
+    print(loudify('hello'));
+
+    /// 变量作用范围
+    /// 嵌套的函数中可以访问包含他的函数中定义的变量(😅这个好像没啥亮点吧)
+    var topLevel = true;
+    mainSSS() {
+      var insideMain = true;
+      myFunction() {
+        var insideFunction = true;
+        nestedFunction() {
+          var insideNestedFunction = true;
+          assert(topLevel);
+          assert(insideMain);
+          assert(insideFunction);
+          assert(insideNestedFunction);
+        }
+      }
+    }
+
+    /// 变量闭合
+    /// 函数可以返回一个函数
+    
+    /// Returns a function that adds [addBy] to the
+    /// Founction makeAdder(num addBy) {
+        /// return (num i) => addBy + 1;
+    /// }
+    /// 
+    /// var add2 = makeAdder(2);
+    /// var add4 = makeAdder(4);
+    /// 
+    /// add2(3) == 5;
+    /// add4(5) == 9;
+
+
+
+    /// 函数返回值
+    /// 所以的函数都会有返回值
+    /// 如果没有指定函数返回值，则默认的返回值是null
+    /// 没有返回值的函数，系统会在最后添加隐式的return 语句
+
   } 
 
 
