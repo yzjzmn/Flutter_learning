@@ -36,13 +36,13 @@ class _SampleAppPageState extends State<SampleAppPage> {
     }
   }
   
-  // TODO:这里有疑问,_toggle方法执行,然后判断toggle 
-  // return FloatingActionButton, 然后button的方法_typeString也执行了
+  // TODO:这里有疑问,_toggle方法执行,然后判断toggle去选择加载Text或者 FloatingActionButton
+  // return FloatingActionButton, 然后button的方法_buildInTypes也执行了
   // 暂时搞不懂为什么,return 后面的是一个函数整体?不是一个对象,所以onPressed也执行了吗
 
   // 类似于返回值Void方法  
   _buildInTypes() {
-      //😂😂😂用VSCode写着好难受,没有段落自动对齐么,类似于Xcode那种option+i的操作
+      //😂😂😂用VSCode写着好难受
 
       _typeOfNumber();
       _typeOfString();
@@ -146,10 +146,9 @@ class _SampleAppPageState extends State<SampleAppPage> {
     // eg:
     // var name = 'Bob';
     // if (name) {
-      // 在别的语言中会进入这个判断,但是Dart会报异常,难受
+      // 在别的语言中会进入这个判断,但是Dart会报异常 (必须补全写成:if name != null)
       // 在production mode 中上面的代码将不会输出任何东西，因为name != true。
       // checked mode 中上面的代码将会出现异常，因为name不是bool 类型。
-      // print('You have a name!');
       // }
   }
 
@@ -222,7 +221,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 
 
 
-// 这里是page的布局
+  // 这里是page的布局
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -239,4 +238,6 @@ class _SampleAppPageState extends State<SampleAppPage> {
       ),
     );
   }
+
+
 }

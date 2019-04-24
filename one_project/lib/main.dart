@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'SampleAppPage.dart';
+import 'FounctionsPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,8 +26,14 @@ class MyApp extends StatelessWidget {
 
       //设置不同homepage
 
-      home: SampleAppPage(),
       // home: MyHomePage(title: 'Yzj的第一个flutter程序'),
+
+      // 基础语法
+      // home: SampleAppPage(),
+      
+      // Dart函数
+      home: FounctionsPage(),
+
     );
   }
 }
