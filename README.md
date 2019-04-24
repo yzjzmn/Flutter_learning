@@ -10,9 +10,7 @@ Flutter中文网:https://flutterchina.club/setup-macos/,里面很详细的教程
 iOS和Android环境搭建好,执行flutter doctor,可能会出现问题的处理方案:
 参考->https://www.jianshu.com/p/b170a6f7b984
 
-网上说flutter热加载比RN更顺畅,讲真的感觉没那么明显吧,但是flutter体验确实比RN要好很多.不说了,接下来就开始吧!
-
-Just do it
+DartPad是一个开源工具,可以在浏览器中使用Dart语言,大中华区特护地址:https://dartpad.cn/
 
 
 

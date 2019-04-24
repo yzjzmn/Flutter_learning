@@ -29,6 +29,8 @@ class FounctionsPage extends StatefulWidget {
          ''',style: TextStyle(color: Colors.red, fontSize: 24),),
         ),
 
+        
+
         floatingActionButton: FloatingActionButton(
         onPressed: _fountionsAction(),//TODO: 命令行执行reload,自动调用_fountionsAction方法 暂时不知道原因
         tooltip: 'Update Text',
