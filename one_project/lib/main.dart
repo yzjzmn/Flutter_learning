@@ -59,7 +59,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  int _count = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -69,7 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      _count = Random().nextInt(1000);
     });
   }
 
@@ -119,17 +117,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.red),
               //style: Theme.of(context).textTheme.display2,
             ),
-            Text(
-              '随机数⬇️:',
-              style: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                color: Colors.red
-                ),
-            ),
-            Text('$_count',
-            style: Theme.of(context).textTheme.display3,
-            )
           ],
         ),
       ),

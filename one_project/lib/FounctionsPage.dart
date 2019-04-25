@@ -8,11 +8,10 @@ class FounctionsPage extends StatefulWidget {
 
   @override
   _FounctionsPageState createState() => _FounctionsPageState();
+
 }
 
-  class _FounctionsPageState extends State<FounctionsPage> {
-
-  
+class _FounctionsPageState extends State<FounctionsPage> {
   // 相当于ViewDidLoad
   @override
   Widget build(BuildContext context) {

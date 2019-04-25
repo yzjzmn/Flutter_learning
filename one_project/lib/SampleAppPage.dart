@@ -30,15 +30,34 @@ class _SampleAppPageState extends State<SampleAppPage> {
       return Text('Toggle One');
     } else {
       return FloatingActionButton(
-        onPressed: _buildInTypes(),
-        child: Text('Toggle Two'),
+      onPressed: _buildInTypes,
+      child: Text('Toggle Two'),
       );
     }
   }
   
-  // TODO:这里有疑问,_toggle方法执行,然后判断toggle去选择加载Text或者 FloatingActionButton
-  // return FloatingActionButton, 然后button的方法_buildInTypes也执行了
-  // 暂时搞不懂为什么,return 后面的是一个函数整体?不是一个对象,所以onPressed也执行了吗
+  // 这里是page的布局
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(//导航栏
+        title: Text("Sample App"),
+      ),
+      body: Center(
+        child: _getToggleChild(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _toggle,
+        tooltip: 'Update Text',
+        child: Icon(Icons.update),
+      ),
+    );
+  }
+
+
+
+  /// Action 
+  ///  
 
   // 类似于返回值Void方法  
   _buildInTypes() {
@@ -170,7 +189,9 @@ class _SampleAppPageState extends State<SampleAppPage> {
 
   // Maps类型
   _typeOfMaps() {
-    print("**********Maps类型**********");
+    print('**********Maps类型 **********');
+    print(DateTime.now());
+    
     // Map　类型将keys 和 values 关联在一起。
     // keys 和 values 可以是任意类型的对象。
     // 像其它支持Map 的编程语言一样，Map 的 key 必须是唯一的。
@@ -221,7 +242,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
     // 可以点击 Runes 关键字到  String.dart文件中查看具体用法
   }
 
-  //操作符
+    //操作符
   _theOperators() {
     // 操作符
     // 操作符的优先级,参考:https://www.jianshu.com/p/fdd046a6dc82
@@ -377,26 +398,15 @@ class _SampleAppPageState extends State<SampleAppPage> {
       /// 也可以通过 throw 语句释放任意的类型: throw 'Out of llamas!';
       
       // throw '我就随便抛出个异常看看';
-
       // Catch:捕获  基本用法和Python一样
 
-      var foo = '';
-
-      void misbehave() {
-        try {
-          foo = "You can't change a final variable's value.";
-          } catch (e) {
-            print('misbehave() partially handled ${e.runtimeType}.');
-            rethrow; // Allow callers to see the exception.
-          }
-         }
-          
-      
-        try {
-          misbehave();
-          } catch (e) {
-            print('main() finished handling ${e.runtimeType}.');
-            }
+    /*  
+     try {
+       misbehave();
+       } catch (e) {
+         print('main() finished handling ${e.runtimeType}.');
+       }
+     */
       
 
   /// Finally  Dart 的finally用来执行那些无论异常是否发生都执行的操作
@@ -407,30 +417,22 @@ class _SampleAppPageState extends State<SampleAppPage> {
   /// } finally {
   ///   cleanLlamaStalls();  // Then clean up.
   /// }
+  
+    var foo = '';
+
+      void misbehave() {
+        try {
+          foo = "You can't change a final variable's value.";
+          } catch (e) {
+            print('misbehave() partially handled ${e.runtimeType}.');
+            rethrow; // Allow callers to see the exception.
+          }
+         }
 
 
   }
 
 
-
-
-  // 这里是page的布局
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(//导航栏
-        title: Text("Sample App"),
-      ),
-      body: Center(
-        child: _getToggleChild(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _toggle,
-        tooltip: 'Update Text',
-        child: Icon(Icons.update),
-      ),
-    );
-  }
 
 
 }
