@@ -50,7 +50,10 @@ class _SampleAppPageState extends State<SampleAppPage> {
       _typeOfList();
       _typeOfMaps();
       _typeOfOthers();
+      
       _theOperators();
+      _theProcessControl();
+
   }
 
   // Number类型
@@ -303,10 +306,110 @@ class _SampleAppPageState extends State<SampleAppPage> {
               .build())
     .build();
     */
-    
+
 
   }
 
+  /// 流程控制语句   和Python，Java，Swift,C++ 都有类似的操
+  _theProcessControl() {
+    /// if and else
+    /// for loops
+    /// while and do-while
+    /// break and continue
+    /// switch and case
+    /// assert
+    /// try-catch and throw
+    
+    // 除了常规的for 循环外，针对可以序列化的操作数，可以使用forEach() 方法。
+    // 当不关心操作数的当前的下标的时候，forEach()方法是很简便的  
+    // 举个栗子
+    var collection = [1,2,3,4];
+    for (var x in collection) {
+      print(x);
+    }
+
+    // switch case 语句的前后操作数必须是相同的类型的对象实例(即使其中一个操作数属于另一个对象的子类的实例，比较操作也不行。)
+    // 每一个非空的case 子句(不是case 判断语句本身，而是case 语句下面的实际操作。)最后都必须跟上break 语句
+    /* 
+    var command = 'OPEN';
+    switch (command) {
+      case 'OPEN':
+      executeOpen();
+      // ERROR: Missing break causes an exception!!
+
+      case 'CLOSED':
+      executeClosed();
+      break;
+      } 
+      */
+
+      /* 
+      var command = 'CLOSED';
+      switch (command) {
+        case 'CLOSED': // Empty case falls through.
+        case 'NOW_CLOSED':
+        // Runs for both CLOSED and NOW_CLOSED.
+        executeNowClosed();
+        break;
+        }
+       */
+
+      // 使用switch / case 语句，配合 continue 语句。可以实现类似 goto 语句的功能
+      /* 
+      var command = 'CLOSED';
+      switch (command) {
+        case 'CLOSED':
+        executeClosed();
+        continue nowClosed;
+        // Continues executing at the nowClosed label.
+        nowClosed:
+
+        case 'NOW_CLOSED':
+        // Runs for both CLOSED and NOW_CLOSED.
+        executeNowClosed();
+        break;
+        }
+       */
+
+      /// assert 断言
+      /// Exceptions 异常,Dart 提供 Exception 和 Error 类型来处理异常,自己也可以定义属于自己的异常类型
+      /// Throw 用于抛出异常 throw new FormatException('Expected at least 1 section');
+      /// 也可以通过 throw 语句释放任意的类型: throw 'Out of llamas!';
+      
+      // throw '我就随便抛出个异常看看';
+
+      // Catch:捕获  基本用法和Python一样
+
+      var foo = '';
+
+      void misbehave() {
+        try {
+          foo = "You can't change a final variable's value.";
+          } catch (e) {
+            print('misbehave() partially handled ${e.runtimeType}.');
+            rethrow; // Allow callers to see the exception.
+          }
+         }
+          
+      
+        try {
+          misbehave();
+          } catch (e) {
+            print('main() finished handling ${e.runtimeType}.');
+            }
+      
+
+  /// Finally  Dart 的finally用来执行那些无论异常是否发生都执行的操作
+  /// try {
+  /// breedMoreLlamas();
+  /// } catch(e) {
+  ///   print('Error: $e');  // Handle the exception first.
+  /// } finally {
+  ///   cleanLlamaStalls();  // Then clean up.
+  /// }
+
+
+  }
 
 
 

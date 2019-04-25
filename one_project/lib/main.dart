@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
       // home: MyHomePage(title: 'Yzj的第一个flutter程序'),
 
       // 基础语法
-      // home: SampleAppPage(),
+      home: SampleAppPage(),
       
       // Dart函数
-      home: FounctionsPage(),
+      // home: FounctionsPage(),
 
     );
   }
