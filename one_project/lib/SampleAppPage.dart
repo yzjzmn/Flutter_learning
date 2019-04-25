@@ -50,6 +50,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
       _typeOfList();
       _typeOfMaps();
       _typeOfOthers();
+      _theOperators();
   }
 
   // Number类型
@@ -182,7 +183,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 
     var nobleGases = {
       // Keys  Values
-      2 :   'helium',
+       2:   'helium',
       10:   'neon',
       18:   'argon',
       };
@@ -215,6 +216,95 @@ class _SampleAppPageState extends State<SampleAppPage> {
     // Symbols 类型
     // 一般程序中不会使用Symbol类型,Symbol类型跟在#后面.
     // 可以点击 Runes 关键字到  String.dart文件中查看具体用法
+  }
+
+  //操作符
+  _theOperators() {
+    // 操作符
+    // 操作符的优先级,参考:https://www.jianshu.com/p/fdd046a6dc82
+
+    // 算术操作符:
+    // 关系操作符:
+
+    // 类型比较符:
+    // as is is!
+    // is操作，用来比较前操作数是否是后操作数的对象
+    // as操作，用来将前操作数指定为后操作数的类型
+
+    // 指定操作符
+    // =操作符，将后操作数的值赋给前操作数
+    // ??=操作符，如果前操作数是null类型，则将后操作数赋值给前操作数；如果前操作数不等于null,则保持前操作数的值发生变化
+
+    // 组合指定操作符
+    // Dart 支持将算术操作符与=组合起来实现更复杂的功能
+    var a = 2;
+    a *= 3;
+    assert(a==6);
+
+    // 逻辑操作符
+    // !expr : inverts the following expression (changes false to true, and vice versa)
+    // &&    : logical AND
+
+    // 逻辑操作符实例:
+    // if (!done && (col == 0 || col == 3)) {
+      // ...Do something...
+    // }
+
+    /// 位操作符及位移操作符
+    /// Dart 针对整数(int 类型)支持位操作符及位移操作符
+    final value = 0x22;
+    final bitmask = 0x0f;
+    assert((value & bitmask)  == 0x02);  // AND
+    assert((value & ~bitmask) == 0x20);  // AND NOT
+    assert((value | bitmask)  == 0x2f);  // OR
+    assert((value ^ bitmask)  == 0x2d);  // XOR
+    assert((value << 4)       == 0x220); // Shift left
+    assert((value >> 4)       == 0x02);  // Shift right
+
+    /// 条件表达式
+    /// Dart 支持条件表达式，同时为了减少代码，也提供了简化的操作符
+    /// Dart中有两种方式简化类似其它语言的if-else 功能
+    
+    /// 使用 ?: 表达式,举个栗子:(😓这不是三目运算嘛)
+    /// condition ? expr1 : expr2
+    
+    /// 使用?? 表达式(和swift很像,可以用于添加默认值)
+    /// 举个栗子:  expr1 ?? expr2
+
+
+
+    /// 级联操作符(..)
+    /// 通过级联操作符(..)，可以连续的操作同一对象，达到减少中间变量，减少代码的目的
+    /// 如下面的例子
+
+    /* 
+    querySelector('#button') // Get an object.
+    ..text = 'Confirm'   // Use its members.
+    ..classes.add('important')
+    ..onClick.listen((e) => window.alert('Confirmed!'));
+    */
+
+    // 等同于下面代码
+    /*
+    var button = querySelector('#button');
+    button.text = 'Confirm';
+    button.classes.add('important');
+    button.onClick.listen((e) => window.alert('Confirmed!'));
+    */
+
+    // 另一个例子
+    /*
+    final addressBook = (new AddressBookBuilder()
+    ..name = '哈哈'
+    ..email = 'yzj@example.com'
+    ..phone = (new PhoneNumberBuilder()
+              ..number = '1321412'
+              ..label  = 'work')
+              .build())
+    .build();
+    */
+    
+
   }
 
 
