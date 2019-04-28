@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
+
 // https://flutterchina.club/flutter-for-ios/#views
 // flutter中文网示例
 
@@ -9,6 +11,10 @@ class SampleAppPage extends StatefulWidget {
 // 在 iOS 上更新 views，只需要直接改变它们就可以了。
 // 在 Flutter 中，widgets 是不可变的，而且不能被直接更新。
 // 你需要去操纵 widget 的 state。
+
+// VSCode显示所有函数列表 shift+command+O
+
+
   @override
   _SampleAppPageState createState() => _SampleAppPageState();
 }
@@ -419,21 +425,59 @@ class _SampleAppPageState extends State<SampleAppPage> {
   ///   cleanLlamaStalls();  // Then clean up.
   /// }
   
-    var foo = '';
-
+  /*
+    final foo = '222';
       void misbehave() {
         try {
-          foo = "You can't change a final variable's value.";
+          // foo = "You can't change a final variable's value.";
+          // 因为不能修改,这样写编译会出问题
           } catch (e) {
             print('misbehave() partially handled ${e.runtimeType}.');
             rethrow; // Allow callers to see the exception.
           }
          }
+  */
+  }
+
+  /// 对象
+  _theDartObject() {
+    // Dart 是一种面向对象的语言，并且支持基于mixin的继承方式
+    // Dart 语言中所有的对象都是某一个类的实例。所有的类有同一个基类--Object。
+    // 基于mixin的继承方式具体是指：一个类可以继承自多个父类。
+    //  使用new语句来构造一个类。 
+    // 构造函数的名字可能是ClassName，也可以是ClassName.identifier
+      
+      
+      /*
+      var jsonData = JSON.decode('{"x":1, "y":2}');
+      // Create a Point using Point().
+      var p1 = new Point(2, 2);
+
+      // Create a Point using Point.fromJson().
+      var p2 = new Point.fromJson(jsonData);
+      */
+
+      // .(dot)调用实例变量或方法  点语法
+
+      // ?. 确认前操作数不为空  常用来代替.  
+      // If p is non-null, set its y value to 4.
+      // p?.y = 4;
+
+      // 使用const替代new来创建编译时的常量构造函数
+      // var p = const ImmutablePoint(2, 2);
+
+      // 使用runtimeType方法，在运行中获取对象的类型。该方法将返回Type 类型的变量  😮这个有点厉害
+      // print('The type of a is ${a.runtimeType}');
 
 
   }
 
 
 
+}
 
+class  Point {
+  num x;
+  num y;
+  num z = 0;
 }
