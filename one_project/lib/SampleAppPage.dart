@@ -467,17 +467,83 @@ class _SampleAppPageState extends State<SampleAppPage> {
       // var p = const ImmutablePoint(2, 2);
 
       // 使用runtimeType方法，在运行中获取对象的类型。该方法将返回Type 类型的变量  😮这个有点厉害
-      // print('The type of a is ${a.runtimeType}');
+      // print('The type of a is ${a.runtimeType}')
 
 
+      /// 实例变量
+      /// 在类定义中，所有没有初始化的变量都会被初始化为null
+      /// class Point {
+      ///   num x; // Declare instance variable x, initially null.
+      ///   num y; // Declare y, initially null.
+      ///   num z = 0; // Declare z, initially 0.
+      ///   }
+      /// 
+      /// 类定义中所有的变量Dart 语言都会隐式的定义 setter 方法，针对非空的变量会额外增加 getter 方法
+ 
+      /// 
   }
-
-
-
 }
 
+
+
+
+/// 构造函数(Constructors) 
+/// 声明一个和类名相同的函数，来作为类的构造函数。
 class  Point {
   num x;
   num y;
-  num z = 0;
+  
+  Point(num x, num y) {
+    this.x = x;
+    this.y = y;
+  }
 }
+
+// this关键字指向了当前类的实例, 上面的代码可以简化为:
+class PointA {
+  num x;
+  num y;
+
+  // Syntactic sugar for setting x and y
+  // before the constructor body runs.
+  PointA(this.x, this.y);
+}
+
+// 工厂构造函数(Factory constructors)
+// factory 关键字的功能，当实现构造函数但是不想每次都创建该类的一个实例的时候使用。
+class Logger {
+  final String name;
+  bool mute =false;
+
+  // _cache is library-private, thanks to the _ in front
+  // of its name.
+  static final Map<String, Logger> _cache = <String, Logger> {};
+
+  factory Logger(String name) {
+    if (_cache.containsKey(name)) {
+      return _cache[name];
+    } else {
+      final logger = new Logger._internal(name);
+      _cache[name] =logger;
+      return logger;
+    }
+  }
+
+  Logger._internal(this.name);
+
+  void log(String msg) {
+    if (!mute) {
+      print(msg);
+    }
+  }
+}
+
+// void main() {
+
+//  var p1 = new Logger("1");
+//  p1.log("2"); //输出2
+
+//  var p2 = new Logger("11");
+//  p2.log("21"); //输出21
+
+// }
