@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'HomeMenuPage.dart';
+import 'ExampleUIPage.dart';
 
 // 新建一个 page  默认有3种方式
 // Flutter Stateful widget  
@@ -42,8 +43,10 @@ class _BuildViewPageState extends State<BuildViewPage> {
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+
           setUpCenter(),
           setUpCenter('kobe'),
+          
           new MaterialButton(
             height: 44.0,
               color: Colors.blue,
@@ -65,7 +68,8 @@ class _BuildViewPageState extends State<BuildViewPage> {
                 Navigator.push(
                   context, 
                   new MaterialPageRoute(
-                    builder: (context) => new HomeMenuPage()
+                    // builder: (context) => new HomeMenuPage()
+                    builder: (context) => new ExampleUIPage()
                   ) 
                 );
               },
@@ -180,7 +184,7 @@ class PushSecondViewController extends StatelessWidget {
         title: new Text(title),
       ),
       body: new Center(
-          child: new Image.asset("images/image_kb.png")  //路径要写全
+        child: new Image.asset("images/image_kb.png")  //路径要写全
         ),
     );
   }
