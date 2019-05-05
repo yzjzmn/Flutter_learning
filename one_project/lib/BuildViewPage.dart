@@ -80,7 +80,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
     );
   }
 
-  /// 构建一个按钮MaterialButton
+  /// 构建一个按钮MaterialButton title非必要参数,不传会有默认值
   Center setUpCenter([String title = "跳转到图片"]) {
     return new Center(
             child: new MaterialButton(
@@ -102,19 +102,41 @@ class _BuildViewPageState extends State<BuildViewPage> {
               disabledElevation: 5.0,//按下的时候的阴影
 
               onPressed: (){
-                Navigator.push(
-                  context, 
-                  new MaterialPageRoute(
+                if (title != '跳转到图片') {
+                  Navigator.push(context, new MaterialPageRoute(
                     builder: (context) => new PushSecondViewController(
-                    title: '第二个页面',
-                    )
-                  ) 
-                );
+                      title: '新的路由页面',
+                    ),
+                    fullscreenDialog: true,//类似于present的感觉,从下向上铺满
+                  ));
+                } else {
+                  Navigator.push(
+                    context, 
+                    new MaterialPageRoute(
+                      builder: (context) => new PushSecondViewController(
+                      title: '第二个页面',
+                      )
+                    ) 
+                  );
+                }
+                /// MaterialPageRoute的构造函数
+                /// MaterialPageRoute({
+                /// @required this.builder,
+                /// RouteSettings settings,
+                /// this.maintainState = true,
+                /// bool fullscreenDialog = false,
+                /// }) 
+                /// builder 是一个WidgetBuilder类型的回调函数，它的作用是构建路由页面的具体内容，返回值是一个widget。我们通常要实现此回调，返回新路由的实例
+                /// settings 包含路由的配置信息，如路由名称、是否初始路由（首页）。
+                /// maintainState：默认情况下，当入栈一个新路由时，原来的路由仍然会被保存在内存中，如果想在路由没用的时候释放其所占用的所有资源，可以设置maintainState为false
+                /// fullscreenDialog表示新的路由页面是否是一个全屏的模态对话框，在iOS中，如果fullscreenDialog为true，新页面将会从屏幕底部滑入（而不是水平方向）
               },
             ),
           );
   }
 
+
+  /// 
   /// UI布局  返回一个 Scaffold
   Scaffold setUpUIView() {
     return new Scaffold(
