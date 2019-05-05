@@ -45,35 +45,10 @@ class _BuildViewPageState extends State<BuildViewPage> {
         children: <Widget>[
 
           setUpCenter(),
+          setUpCenter('replace'),
+          setUpCenter('popUntil'),
           setUpCenter('kobe'),
-          
-          new MaterialButton(
-            height: 44.0,
-              color: Colors.blue,
-              child: Text('跳转到Home页面'),
-              textColor: Colors.white,//文字的颜色
-              textTheme:ButtonTextTheme.normal ,//按钮的主题
-              onHighlightChanged: (bool b){//水波纹高亮变化回调
-              },
-              disabledTextColor: Colors.black54,//按钮禁用时候文字的颜色
-              disabledColor: Colors.black54,//按钮被禁用的时候显示的颜色
-              highlightColor: Colors.lightBlue,//点击或者toch控件高亮的时候显示在控件上面，水波纹下面的颜色
-              splashColor: Colors.white,//水波纹的颜色
-              colorBrightness: Brightness.light,//按钮主题高亮
-              elevation: 5.0,//按钮下面的阴影
-              highlightElevation: 5.0,//高亮时候的阴影
-              disabledElevation: 5.0,//按下的时候的阴影
-
-              onPressed: (){
-                Navigator.push(
-                  context, 
-                  new MaterialPageRoute(
-                    // builder: (context) => new HomeMenuPage()
-                    builder: (context) => new ExampleUIPage()
-                  ) 
-                );
-              },
-          ),
+          setUpCenter('跳转到Home页面'),          
         ],
         
       ),
@@ -85,7 +60,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
     return new Center(
             child: new MaterialButton(
               height: 44.0,
-              color: Colors.red,
+              color: title == '跳转到Home页面'?Colors.blue:Colors.red,
               child: Text(title),
               // padding: EdgeInsets.all(50.0),//按钮距离里面内容的内边距
               textColor: Colors.white,//文字的颜色
@@ -102,14 +77,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
               disabledElevation: 5.0,//按下的时候的阴影
 
               onPressed: (){
-                if (title != '跳转到图片') {
-                  Navigator.push(context, new MaterialPageRoute(
-                    builder: (context) => new PushSecondViewController(
-                      title: '新的路由页面',
-                    ),
-                    fullscreenDialog: true,//类似于present的感觉,从下向上铺满
-                  ));
-                } else {
+                if (title == '跳转到图片') {
                   Navigator.push(
                     context, 
                     new MaterialPageRoute(
@@ -118,6 +86,41 @@ class _BuildViewPageState extends State<BuildViewPage> {
                       )
                     ) 
                   );
+
+                } else if (title == 'replace') {
+                  Navigator.replace(
+                    context,
+                    newRoute: MaterialPageRoute(
+                      builder: (context) => new PushSecondViewController(
+                        title: 'replace',
+                      )
+                    )
+                  );
+                } else if (title == 'popUntil') {
+                  // Navigator.popUntil(context, predicate)
+                  /// Navigator 还有很多其它方法，如Navigator.replace、Navigator.popUntil等
+                  /// 详情请参考API文档或SDK源码注释
+                  /// 
+                } else if (title == 'kobe') {
+                  Navigator.replace(context,newRoute: MaterialPageRoute(
+                      builder: (context) => new PushSecondViewController(
+                        title: 'replace',
+                      )
+                    )
+                  );
+                }  else if (title == '跳转到Home页面') {
+                  Navigator.push(context, new MaterialPageRoute(
+                      // builder: (context) => new HomeMenuPage()
+                      builder: (context) => new ExampleUIPage()
+                    )
+                  );
+                } else {
+                  Navigator.push(context, new MaterialPageRoute(
+                    builder: (context) => new PushSecondViewController(
+                      title: '新的路由页面',
+                    ),
+                    fullscreenDialog: true,//类似于present的感觉,从下向上铺满
+                  ));
                 }
                 /// MaterialPageRoute的构造函数
                 /// MaterialPageRoute({
