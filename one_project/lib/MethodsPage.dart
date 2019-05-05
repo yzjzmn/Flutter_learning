@@ -220,3 +220,28 @@ mainpOint() {
 // 使用async函数和await表达式。
 // 使用Future功能提供的API。
 
+// 可以通过如下的方式来获取asynchronous 功能返回的Stream `对象的值。
+
+// 使用async 和一个异步的循环(await for)。
+// 使用Stream的相关API。
+
+/// 代码使用了async或await就是异步处理，虽然代码看起来像是同步处理的
+// await lookUpVersion()
+
+// 必须在一个使用了async关键字标记后的函数中来使用await表达式
+  
+  // checkVersion() async {
+  //   var version = await lookUpVersion();
+  //   if (version == expectedVersion) {
+  //     // Do something.
+  //   } else {
+  //     // Do something else.
+  //   }
+  // }
+
+// await表达式可以与try，catch和finally语句搭配在一起使用。
+// try {
+//   server = await HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4044);
+// } catch (e) {
+//   // React to inability to bind to the port...
+// }
