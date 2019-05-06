@@ -1,4 +1,8 @@
+
+# 应用或包名称
 name: one_project
+
+# 应用或包的描述、简介
 description: A new Flutter project.
 
 # The following defines the version and build number for your application.
@@ -11,11 +15,25 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+
+# 包管理
+# 一个完整的应用程序往往会依赖很多第三方包,Flutter也有自己的依赖管理工具
+# 使用配置文件pubspec.yaml（位于项目根目录）来管理第三方依赖包,类似于podfile
+# 类似于iOS的Cocoapods或Carthage,Android的Gradle
+
+# Pub仓库  类似于Cocoapods仓库
+# 执行 flutter packages get 命令,然后就可以引入对应的依赖包了
+
+
+
+#应用包的版本号
 version: 1.0.0+1
 
+#环境
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
+#应用或包依赖的其它包或插件
 dependencies:
   flutter:
     sdk: flutter
@@ -24,6 +42,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  # 新添加的依赖  这是一个包含数千个常用的英文单词以及一些实用开源包
+  english_words: ^3.1.3
+
+#开发环境依赖的工具包（而不是flutter应用本身依赖的包）
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -33,6 +55,7 @@ dev_dependencies:
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
 # The following section is specific to Flutter.
+# flutter相关的配置选项
 flutter:
 
   # The following line ensures that the Material Icons font is

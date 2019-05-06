@@ -35,6 +35,9 @@ class MyApp extends StatelessWidget {
       // 通过路由名打开新路由页,要通过路由名称来打开新路由，可以使用：
       // Future pushNamed(BuildContext context, String routeName)
 
+      /// 命名路由的优缺点
+      /// 命名路由的最大优点是直观，我们可以通过语义化的字符串来管理路由
+      /// 缺点：不能直接传递路由参数,如果我们使用命名参数，就必须将路由提前注册到路由表中,所以就无法动态修改参数
 
       //设置不同homepage
 

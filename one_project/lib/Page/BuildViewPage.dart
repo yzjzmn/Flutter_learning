@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import'package:flutter/rendering.dart';
 import 'HomeMenuPage.dart';
 import 'ExampleUIPage.dart';
 
@@ -25,7 +26,6 @@ class BuildViewPage extends StatefulWidget {
 
 /// 看做OC的.m方法实现
 class _BuildViewPageState extends State<BuildViewPage> {
-  
   // 可以看做OC的ViewDidLoad方法
   @override
   Widget build(BuildContext context) {
@@ -57,6 +57,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
         
       ),
     );
+
   }
 
   /// 构建一个按钮MaterialButton title非必要参数,不传会有默认值
@@ -97,7 +98,9 @@ class _BuildViewPageState extends State<BuildViewPage> {
             // Navigator.popUntil(context, predicate)
             /// Navigator 还有很多其它方法，如Navigator.replace、Navigator.popUntil等
             /// 详情请参考API文档或SDK源码注释
+            
             Navigator.pushNamed(context, 'ExampleUIPage');
+
           } else if (title == 'Kobe') {
             Navigator.push(context,new MaterialPageRoute(
                 builder: (context) => new PushSecondViewController(
@@ -207,7 +210,7 @@ class PushSecondViewController extends StatelessWidget {
         title: new Text(title),
       ),
       body: new Center(
-        child: new Image.asset("images/image_kb.png")  //路径要写全
+        child: new Image.asset("images/image_kb.png")  //路径要写全  后面最好带上 package: 
         ),
     );
   }
