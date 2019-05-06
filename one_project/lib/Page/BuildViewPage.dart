@@ -43,11 +43,15 @@ class _BuildViewPageState extends State<BuildViewPage> {
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+        // TODO:布局问题
+        /// 这里有问题, MaterialButton设置只height的话 多个button会有间隙 
+        /// 通过设置padding设置 可以达到没有间隙,但是需要计算文字的高度,然而不同字体中英文高度不等,很难达到效果
+        /// 暂时不知道怎么去处理这个问题
 
           setUpCenter(),
-          setUpCenter('replace'),
+          setUpCenter('Kobe'),
+          setUpCenter('Replace'),
           setUpCenter('popUntil'),
-          setUpCenter('kobe'),
           setUpCenter('跳转到Home页面'),          
         ],
         
@@ -58,70 +62,63 @@ class _BuildViewPageState extends State<BuildViewPage> {
   /// 构建一个按钮MaterialButton title非必要参数,不传会有默认值
   Center setUpCenter([String title = "跳转到图片"]) {
     return new Center(
-            child: new MaterialButton(
-              height: 44.0,
-              color: title == '跳转到Home页面'?Colors.blue:Colors.red,
-              child: Text(title),
-              // padding: EdgeInsets.all(50.0),//按钮距离里面内容的内边距
-              textColor: Colors.white,//文字的颜色
-              textTheme:ButtonTextTheme.normal ,//按钮的主题
-              onHighlightChanged: (bool b){//水波纹高亮变化回调
-              },
-              disabledTextColor: Colors.black54,//按钮禁用时候文字的颜色
-              disabledColor: Colors.black54,//按钮被禁用的时候显示的颜色
-              highlightColor: Colors.yellowAccent,//点击或者toch控件高亮的时候显示在控件上面，水波纹下面的颜色
-              splashColor: Colors.white,//水波纹的颜色
-              colorBrightness: Brightness.light,//按钮主题高亮
-              elevation: 5.0,//按钮下面的阴影
-              highlightElevation: 5.0,//高亮时候的阴影
-              disabledElevation: 5.0,//按下的时候的阴影
-
-              onPressed: (){
-                if (title == '跳转到图片') {
-                  Navigator.push(
-                    context, 
-                    new MaterialPageRoute(
-                      builder: (context) => new PushSecondViewController(
-                      title: '第二个页面',
-                      )
-                    ) 
-                  );
-
-                } else if (title == 'replace') {
-                  Navigator.replace(
-                    context,
-                    newRoute: MaterialPageRoute(
-                      builder: (context) => new PushSecondViewController(
-                        title: 'replace',
-                      )
-                    )
-                  );
-                } else if (title == 'popUntil') {
-                  // Navigator.popUntil(context, predicate)
-                  /// Navigator 还有很多其它方法，如Navigator.replace、Navigator.popUntil等
-                  /// 详情请参考API文档或SDK源码注释
-                  /// 
-                } else if (title == 'kobe') {
-                  Navigator.replace(context,newRoute: MaterialPageRoute(
-                      builder: (context) => new PushSecondViewController(
-                        title: 'replace',
-                      )
-                    )
-                  );
-                }  else if (title == '跳转到Home页面') {
-                  Navigator.push(context, new MaterialPageRoute(
-                      // builder: (context) => new HomeMenuPage()
-                      builder: (context) => new ExampleUIPage()
-                    )
-                  );
-                } else {
-                  Navigator.push(context, new MaterialPageRoute(
-                    builder: (context) => new PushSecondViewController(
-                      title: '新的路由页面',
-                    ),
-                    fullscreenDialog: true,//类似于present的感觉,从下向上铺满
-                  ));
-                }
+      
+      child: new MaterialButton(
+        /// 
+        height: 44.0,
+        color: title == '跳转到Home页面'?Colors.blue:Colors.red,
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 16.0, fontFamily: 'PingFang-SC'),
+        ),
+        padding: EdgeInsets.fromLTRB(20, 14, 20, 15),//按钮距离里面内容的内边距
+        textColor: Colors.white,//文字的颜色
+        textTheme:ButtonTextTheme.normal ,//按钮的主题
+        onHighlightChanged: (bool b){//水波纹高亮变化回调
+        },
+        disabledTextColor: Colors.black54,//按钮禁用时候文字的颜色
+        disabledColor: Colors.black54,//按钮被禁用的时候显示的颜色
+        highlightColor: Colors.yellowAccent,//点击或者toch控件高亮的时候显示在控件上面，水波纹下面的颜色
+        splashColor: Colors.white,//水波纹的颜色
+        colorBrightness: Brightness.light,//按钮主题高亮
+        // elevation: 5.0,//按钮下面的阴影
+        // highlightElevation: 5.0,//高亮时候的阴影
+        // disabledElevation: 5.0,//按下的时候的阴影
+        
+        onPressed: (){
+          if (title == 'Replace') {
+            Navigator.replace(context, newRoute: MaterialPageRoute(
+              builder: (context) => new PushSecondViewController(
+                  title: title,
+                )
+              )
+            );
+          } else if (title == 'popUntil') {
+            // Navigator.popUntil(context, predicate)
+            /// Navigator 还有很多其它方法，如Navigator.replace、Navigator.popUntil等
+            /// 详情请参考API文档或SDK源码注释
+            Navigator.pushNamed(context, 'ExampleUIPage');
+          } else if (title == 'Kobe') {
+            Navigator.push(context,new MaterialPageRoute(
+                builder: (context) => new PushSecondViewController(
+                  title: title,
+                ),
+              )
+            );
+          }  else if (title == '跳转到Home页面') {
+            Navigator.push(context, new MaterialPageRoute(
+                // builder: (context) => new HomeMenuPage()
+                builder: (context) => new ExampleUIPage()
+              )
+            );
+          } else {
+            Navigator.push(context, new MaterialPageRoute(
+              builder: (context) => new PushSecondViewController(
+                title: '新的路由页面',
+              ),
+              fullscreenDialog: true,//类似于present的感觉,从下向上铺满
+            ));
+          }
                 /// MaterialPageRoute的构造函数
                 /// MaterialPageRoute({
                 /// @required this.builder,
@@ -136,6 +133,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
               },
             ),
           );
+          
   }
 
 

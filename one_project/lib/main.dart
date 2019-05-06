@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'SampleAppPage.dart';
-import 'FounctionsPage.dart';
-import 'BuildViewPage.dart';
+import 'package:one_project/Page/SampleAppPage.dart';
+import 'package:one_project/Page/FounctionsPage.dart';
+import 'package:one_project/Page/BuildViewPage.dart';
+import 'package:one_project/Page/ExampleUIPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +25,16 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+
+      /// 注册路由列表  只能在这里注册么?
+      routes: {
+        'MyHomePage':(context) => MyHomePage(),
+        'BuildViewPage':(context)    => BuildViewPage(),
+        'ExampleUIPage':(context)    => ExampleUIPage(),
+      },
+      // 通过路由名打开新路由页,要通过路由名称来打开新路由，可以使用：
+      // Future pushNamed(BuildContext context, String routeName)
+
 
       //设置不同homepage
 
