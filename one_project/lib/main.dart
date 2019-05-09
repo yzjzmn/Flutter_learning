@@ -4,6 +4,7 @@ import 'package:one_project/Page/SampleAppPage.dart';
 import 'package:one_project/Page/FounctionsPage.dart';
 import 'package:one_project/Page/BuildViewPage.dart';
 import 'package:one_project/Page/ExampleUIPage.dart';
+import 'package:english_words/english_words.dart';
 
 void main() => runApp(MyApp());
 
@@ -148,3 +149,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+

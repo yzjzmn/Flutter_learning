@@ -1,4 +1,58 @@
 
+#########################
+#         包管理         #
+#########################
+# 一个完整的应用程序往往会依赖很多第三方包,Flutter也有自己的依赖管理工具
+# 使用配置文件pubspec.yaml（位于项目根目录）来管理第三方依赖包,类似于podfile
+# 类似于iOS的Cocoapods或Carthage,Android的Gradle
+
+# Pub仓库  类似于Cocoapods仓库
+# 执行 flutter packages get 命令,然后就可以引入对应的依赖包了
+
+# 其他方式的依赖方式
+# 上文所述的依赖方式是依赖pub仓库的。但我们还可以依赖本地包和git仓库
+
+# 依赖本地包,如果我们正在本地开发一个包，包名为pkg1，我们可以通过下面方式依赖:
+  # dependencies:
+    # pkg1:
+        # path: ../../code/pkg1  路径可以是相对的，也可以是绝对的
+# 依赖Git：你也可以依赖存储在Git仓库中的包。如果软件包位于仓库的根目录中，请使用以下语法
+# dependencies:
+  # pkg1:
+    # git:
+      # url: git://github.com/xxx/pkg1.git 上面假定包位于Git存储库的根目录中。如果不是这种情况，可以使用path参数
+      # path: packages/package1
+
+
+###########################
+#         资源管理         #
+###########################
+
+# Flutter应用程序可以包含代码和 assets（有时称为资源）。
+# assets是会打包到程序安装包中的，可在运行时访问。
+# 常见类型的assets包括静态数据（例如JSON文件）、配置文件、图标和图片（JPEG，WebP，GIF，动画WebP / GIF，PNG，BMP和WBMP）等
+
+# 和包管理一样，Flutter也使用pubspec.yaml文件来管理应用程序所需的资源,举个栗子:
+# assets: (感觉很麻烦,不能自动识别资源文件)
+  #  - images/image_kb.png
+  #  - images/image_aj.png
+# 在构建期间，Flutter将asset放置到称为 asset bundle 的特殊存档中，应用程序可以在运行时读取它们（但不能修改）
+# 声明分辨率相关的图片 assets
+# AssetImage 可以将asset的请求逻辑映射到最接近当前设备像素比例(dpi)的asset。为了使这种映射起作用，必须根据特定的目录结构来保存asset：
+
+# …/image.png
+# …/Mx/image.png
+# …/Nx/image.png
+# …etc.
+# 其中M和N是数字标识符，对应于其中包含的图像的分辨率，也就是说，它们指定不同设备像素比例的图片。
+
+# 主资源默认对应于1.0倍的分辨率图片。看一个例子：
+# …/my_icon.png
+# …/2.0x/my_icon.png
+# …/3.0x/my_icon.png
+# 在设备像素比率为1.8的设备上，.../2.0x/my_icon.png 将被选择。对于2.7的设备像素比率，.../3.0x/my_icon.png将被选择。
+
+
 # 应用或包名称
 name: one_project
 
@@ -15,16 +69,6 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-
-# 包管理
-# 一个完整的应用程序往往会依赖很多第三方包,Flutter也有自己的依赖管理工具
-# 使用配置文件pubspec.yaml（位于项目根目录）来管理第三方依赖包,类似于podfile
-# 类似于iOS的Cocoapods或Carthage,Android的Gradle
-
-# Pub仓库  类似于Cocoapods仓库
-# 执行 flutter packages get 命令,然后就可以引入对应的依赖包了
-
-
 
 #应用包的版本号
 version: 1.0.0+1

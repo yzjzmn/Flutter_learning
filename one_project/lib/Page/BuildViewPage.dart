@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import'package:flutter/rendering.dart';
+import 'package:flutter/rendering.dart';
 import 'HomeMenuPage.dart';
 import 'ExampleUIPage.dart';
 
@@ -30,6 +30,9 @@ class _BuildViewPageState extends State<BuildViewPage> {
   @override
   Widget build(BuildContext context) {
     // return setUpUIView();
+
+              debugDumpRenderTree();
+
     return setUpButtons();
   }
 
@@ -47,7 +50,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
         /// 这里有问题, MaterialButton设置只height的话 多个button会有间隙 
         /// 通过设置padding设置 可以达到没有间隙,但是需要计算文字的高度,然而不同字体中英文高度不等,很难达到效果
         /// 暂时不知道怎么去处理这个问题
-
+          
           setUpCenter(),
           setUpCenter('Kobe'),
           setUpCenter('Replace'),
@@ -72,7 +75,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
           title,
           style: TextStyle(fontSize: 16.0, fontFamily: 'PingFang-SC'),
         ),
-        padding: EdgeInsets.fromLTRB(20, 14, 20, 15),//按钮距离里面内容的内边距
+        // padding: EdgeInsets.fromLTRB(20, 14, 20, 15),//按钮距离里面内容的内边距
         textColor: Colors.white,//文字的颜色
         textTheme:ButtonTextTheme.normal ,//按钮的主题
         onHighlightChanged: (bool b){//水波纹高亮变化回调
