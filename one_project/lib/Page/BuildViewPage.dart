@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'HomeMenuPage.dart';
 import 'ExampleUIPage.dart';
+import 'SegmentViewPage.dart';
 
 // 新建一个 page  默认有3种方式
 // Flutter Stateful widget  
@@ -31,7 +32,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
   Widget build(BuildContext context) {
     // return setUpUIView();
 
-              debugDumpRenderTree();
+              // debugDumpRenderTree();
 
     return setUpButtons();
   }
@@ -55,7 +56,9 @@ class _BuildViewPageState extends State<BuildViewPage> {
           setUpCenter('Kobe'),
           setUpCenter('Replace'),
           setUpCenter('popUntil'),
-          setUpCenter('跳转到Home页面'),          
+          setUpCenter('跳转到Home页面'),
+          setUpCenter('segment'),
+                    
         ],
         
       ),
@@ -117,12 +120,16 @@ class _BuildViewPageState extends State<BuildViewPage> {
                 builder: (context) => new ExampleUIPage()
               )
             );
-          } else {
+          } else if (title == '跳转到图片') {
             Navigator.push(context, new MaterialPageRoute(
               builder: (context) => new PushSecondViewController(
                 title: '新的路由页面',
               ),
               fullscreenDialog: true,//类似于present的感觉,从下向上铺满
+            ));
+          } else {
+            Navigator.push(context, new MaterialPageRoute(
+              builder: (content) => new SegmentViewPage(),
             ));
           }
                 /// MaterialPageRoute的构造函数
@@ -136,7 +143,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
                 /// settings 包含路由的配置信息，如路由名称、是否初始路由（首页）。
                 /// maintainState：默认情况下，当入栈一个新路由时，原来的路由仍然会被保存在内存中，如果想在路由没用的时候释放其所占用的所有资源，可以设置maintainState为false
                 /// fullscreenDialog表示新的路由页面是否是一个全屏的模态对话框，在iOS中，如果fullscreenDialog为true，新页面将会从屏幕底部滑入（而不是水平方向）
-              },
+            },
             ),
           );
           
