@@ -1,62 +1,83 @@
 import 'package:flutter/material.dart';
-
+import 'dart:ui';
+// block
 typedef ValueChanged<T, M> = void Function(T value, M valueM);
 
 /**
  * segmentControl
+ * 注意 tabs和pages要对应
  */
 class YZJSegmentControl extends StatefulWidget {
-	final double height;
-	final double width;
+
+	final double segmentHeight;
+	final double segmentWidth;
+
+	final double pagesHeight;
+	final double pagesWidth;
+
 	final List<String> tabs;
-	final ValueChanged<int, String> selected;
+	final List<Widget> pages;
+	
+  final ValueChanged<int, String> selected;
 	final Color normalTitleColor;
 	final Color activeTitleColor;
-	final TextStyle normalTitleStyle;
-	final TextStyle activeTitleStyle;
+  final double normalTitleFontsize;
+	final double activeTitleFontsize;
+  
   final Color indicatorColor;
 	final double indicatorWeight;
-
-	final double radius;
+  final TabBarIndicatorSize indicatorSize;
 	
 	final bool selectNone;
 	
 	YZJSegmentControl({
 		@required this.tabs,
+    @required this.pages,
 		@required this.selected,
-		this.height = 44,
-		this.width = double.infinity,
-		this.normalTitleColor = Colors.blue,
-		this.activeTitleColor = Colors.white,
-		this.normalTitleStyle = const TextStyle(fontSize: 16, color: Colors.black),
-		this.activeTitleStyle = const TextStyle(fontSize: 18, color: Colors.blue),
-		this.radius = 0,
-    this.indicatorColor,
+
+		this.segmentHeight = 44.0,
+		this.segmentWidth = double.infinity,
+
+    this.pagesHeight = 0.0,
+    this.pagesWidth  = double.infinity,
+
+		this.normalTitleColor = Colors.black,
+		this.activeTitleColor = Colors.blue,
+    this.normalTitleFontsize = 16.0,
+    this.activeTitleFontsize = 18.0,
+
+    this.indicatorColor   = Colors.blue,
     this.indicatorWeight = 2.0,
+    this.indicatorSize = TabBarIndicatorSize.label,
 
 		this.selectNone = false,
 	});
-	
-	_YZJSegmentControlState state;
-	
+		
 	@override
-	_YZJSegmentControlState createState() {
-		state = _YZJSegmentControlState();
-		return state;
-	}
+	_YZJSegmentControlState createState() => _YZJSegmentControlState();
 }
 
 class _YZJSegmentControlState extends State<YZJSegmentControl> with SingleTickerProviderStateMixin {
 	
+  TextStyle _normalTitleStyle;
+	TextStyle _activeTitleStyle;
+
+  // 上方title的标题栏
   TabController _tabController;
+  // 下方承载内容的pages
+  final PageController _pageController = PageController();
 	
 	@override
 	void initState() {
 		super.initState();
+    _normalTitleStyle = TextStyle(fontSize: widget.normalTitleFontsize, color: widget.normalTitleColor);
+    _activeTitleStyle = TextStyle(fontSize: widget.activeTitleFontsize, color: widget.activeTitleColor);
+    
 		_tabController = TabController(length: widget.tabs.length, vsync: this);
 		_tabController.addListener(() {
 			if (_tabController.indexIsChanging) {
 				setState(() {});
+        _pageController.jumpTo(MediaQuery.of(context).size.width * _tabController.index);
 				widget.selected(_tabController.index, widget.tabs[_tabController.index]);
 			}
 		});
@@ -64,9 +85,37 @@ class _YZJSegmentControlState extends State<YZJSegmentControl> with SingleTicker
 	
 	@override
 	Widget build(BuildContext context) {
-		return SizedBox(
-			height: widget.height,
-			width: widget.width,
+    // 获取全屏size
+    final screenSize = MediaQuery.of(context).size;
+    // 顶部bar距离
+    final double sStaticBarHeight = MediaQueryData.fromWindow(window).padding.top;
+    // 底部bottom距离
+    final double sStaticBottomHeight = MediaQueryData.fromWindow(window).padding.bottom;
+    // pages显示内容高度  kToolbarHeight:系统导航栏高度
+    final double contentHeight = screenSize.height-sStaticBarHeight-sStaticBottomHeight-kToolbarHeight-widget.segmentHeight;
+    // 最终的 pagesHeight    
+    final pagesHeight = (widget.pagesHeight <= 0 || widget.pagesHeight > contentHeight)?contentHeight:widget.pagesHeight;
+
+		final pageSize = Size(screenSize.width, pagesHeight);
+
+    return Scaffold(
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            segmentTitle(),
+            pagesContent(pageSize),
+          ],
+        ),
+      ),
+    );
+	}
+
+  SizedBox segmentTitle() {
+    return SizedBox(
+			height: widget.segmentHeight,
+			width: widget.segmentWidth,
 			child: TabBar(
 				controller: _tabController,
 				tabs: widget.tabs.map((f) {
@@ -76,16 +125,31 @@ class _YZJSegmentControlState extends State<YZJSegmentControl> with SingleTicker
               padding: EdgeInsets.all(0.0),
               child: Text(
                 f, 
-                style: (idx == _tabController.index && !widget.selectNone) ? widget.activeTitleStyle : widget.normalTitleStyle)
+                style: 
+                (idx == _tabController.index && !widget.selectNone) ? _activeTitleStyle: _normalTitleStyle)
                 ) 
 					);
 				}).toList(),
 				isScrollable: false,
 				indicatorColor: widget.indicatorColor,
         indicatorWeight: widget.indicatorWeight,
-        indicatorSize: TabBarIndicatorSize.label,//指示器宽度样式
+        indicatorSize: widget.indicatorSize,//指示器宽度样式
 				labelPadding: EdgeInsets.zero,
 			),
 		);
-	}
+  }
+
+  ConstrainedBox pagesContent (Size screenSize) {
+    return new ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: screenSize.width, maxHeight: screenSize.height, minWidth: screenSize.width, minHeight: screenSize.height),
+      child: new PageView(
+        controller: _pageController,
+        children: widget.pages,
+        onPageChanged: (index) {
+          _tabController.animateTo(index);
+        	widget.selected(_tabController.index, widget.tabs[_tabController.index]);
+        },
+      ),
+    );
+  }
 }

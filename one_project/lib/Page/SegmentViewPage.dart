@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:segment_control/segment_control.dart';
 import 'package:one_project/Widget/yzj_segment_control.dart';
 import 'package:english_words/english_words.dart';
 
@@ -9,8 +8,7 @@ class SegmentViewPage extends StatefulWidget {
 }
 
 class _SegmentViewPageState extends State<SegmentViewPage> {
-  // segment 下方的page视图
-  final PageController _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,36 +18,28 @@ class _SegmentViewPageState extends State<SegmentViewPage> {
 				title: Text('segmentControl'),
 			),
       // color: Colors.white,
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            YZJSegmentControl(
-              tabs: ["应用消息", "版本更新"],
-              selected: (index, title) {
-							  print('选择了第:$index 个$title');
-							  setState(() {
-              });
-            }),
-            // new PageView(
-            //   controller: _pageController,
-            //   children: <Widget>[
-            //     new SegmentControl(),
-            //     new SegmentControl(),
-            //   ],
-            //   onPageChanged: (index) {
-            //     print('滚动在第:$index 个page');
-            //   },
-            // ),
-          ],
-        ), 
+      body:YZJSegmentControl(
+        segmentHeight: 50.0,//
+        normalTitleFontsize: 15.0,
+        activeTitleFontsize: 15.0,
+
+        tabs: ["应用消息", "版本更新"],
+        pages: [new SegmentPageController(text: 'dsd'),
+                new SegmentPageController()],
+        selected: (index, title) {
+				  setState(() {            
+          });
+        }
       ),
-      
     );
   }
 }
 
 class SegmentPageController extends StatefulWidget {
   @override
+  SegmentPageController({Key key, this.text}) :super(key:key);
+  final String text;
+
   _SegmentPageControllerState createState() => _SegmentPageControllerState();
 }
 
@@ -57,12 +47,13 @@ class _SegmentPageControllerState extends State<SegmentPageController> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: widget.text!=null?Colors.red:Colors.green,
       child: new Center(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Text(
-              WordPair.random().toString(),
+              WordPair.random().toString(),style: TextStyle(color: Colors.white, fontSize: 44.0),
             ),
           ],
         ),
