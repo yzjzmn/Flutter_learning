@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:one_project/Widget/yzj_segment_control.dart';
 import 'package:english_words/english_words.dart';
+import 'dart:ui';
 
 class SegmentViewPage extends StatefulWidget {
   @override
@@ -26,6 +27,7 @@ class _SegmentViewPageState extends State<SegmentViewPage> {
         tabs: ["应用消息", "版本更新"],
         pages: [new SegmentPageController(text: 'dsd'),
                 new SegmentPageController()],
+        pagesHeight: MediaQuery.of(context).size.height-MediaQueryData.fromWindow(window).padding.top-MediaQueryData.fromWindow(window).padding.bottom-kToolbarHeight-65-50,
         selected: (index, title) {
 				  setState(() {            
           });

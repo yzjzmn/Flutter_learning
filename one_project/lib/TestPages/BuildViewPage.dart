@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
-import 'HomeMenuPage.dart';
-import 'ExampleUIPage.dart';
-import 'SegmentViewPage.dart';
+import 'package:one_project/TestPages/ExampleUIPage.dart';
+import 'package:one_project/TestPages/SegmentViewPage.dart';
 
 // 新建一个 page  默认有3种方式
 // Flutter Stateful widget  

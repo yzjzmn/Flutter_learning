@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
-import 'HomeMenuPage.dart';
-import 'ExampleUIPage.dart';
-import 'SegmentViewPage.dart';
+import 'package:one_project/Page/HomeMenuPage.dart';
+import 'package:one_project/Page/MessageHomePage.dart';
+import 'package:one_project/Page/MineViewPage.dart';
 
 class HomeTabbarPage extends StatefulWidget {
   @override
@@ -67,8 +66,8 @@ class _HomeTabbarPageState extends State<HomeTabbarPage> with SingleTickerProvid
         controller: _tabController,
         children: <Widget>[
           new HomeMenuPage(),
-          new ExampleUIPage(),
-          new SegmentViewPage()
+          new MessageHomeViewPage(),
+          new MineHomeViewPage(),
         ],
       ),
 

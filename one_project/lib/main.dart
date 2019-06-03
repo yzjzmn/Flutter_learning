@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:one_project/Page/HomeTabbarPage.dart';
-import 'package:one_project/Page/BuildViewPage.dart';
-import 'package:one_project/Page/ExampleUIPage.dart';
+import 'package:one_project/TestPages/BuildViewPage.dart';
+import 'package:one_project/TestPages/ExampleUIPage.dart';
 
 void main() => runApp(MyApp());
 
