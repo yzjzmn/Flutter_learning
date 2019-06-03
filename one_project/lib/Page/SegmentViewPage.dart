@@ -11,14 +11,14 @@ class _SegmentViewPageState extends State<SegmentViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-				// Here we take the value from the MyHomePage object that was created by
-				// the App.build method, and use it to set our appbar title.
-				title: Text('segmentControl'),
-			),
+    return Container(
+      // appBar: AppBar(
+			// 	// Here we take the value from the MyHomePage object that was created by
+			// 	// the App.build method, and use it to set our appbar title.
+			// 	title: Text('segmentControl'),
+			// ),
       // color: Colors.white,
-      body:YZJSegmentControl(
+      child:YZJSegmentControl(
         segmentHeight: 50.0,//
         normalTitleFontsize: 15.0,
         activeTitleFontsize: 15.0,

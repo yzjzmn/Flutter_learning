@@ -7,12 +7,13 @@ class HomeMenuPage extends StatefulWidget {
 }
 
 class _HomeMenuPageState extends State<HomeMenuPage> {
+
   @override
+
+
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      
     );
-
-    
   }
 }

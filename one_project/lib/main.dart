@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
-import 'package:one_project/Page/SampleAppPage.dart';
-import 'package:one_project/Page/FounctionsPage.dart';
+
+import 'package:one_project/Page/HomeTabbarPage.dart';
 import 'package:one_project/Page/BuildViewPage.dart';
 import 'package:one_project/Page/ExampleUIPage.dart';
-import 'package:english_words/english_words.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
+  showWelcomePage() {
+    return   HomeTabbarPage();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,6 +45,9 @@ class MyApp extends StatelessWidget {
 
       //设置不同homepage
 
+      // home主页  整理
+      home: HomeTabbarPage(),
+
       // home: MyHomePage(title: 'Yzj的第一个flutter程序'),
 
       // 基础语法
@@ -51,7 +57,7 @@ class MyApp extends StatelessWidget {
       // home: FounctionsPage(),
 
       // UI
-      home: BuildViewPage(),
+      // home: BuildViewPage(),
 
     );
   }

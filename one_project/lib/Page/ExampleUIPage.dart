@@ -7,12 +7,12 @@ class ExampleUIPage extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: AppBar(
-        title: Text('Widget'),
-      ),
+    return new Container(
+      // appBar: AppBar(
+      //   title: Text('Widget'),
+      // ),
 
-      body: new ListView(
+      child: new ListView(
         children: <Widget>[
           new Image.asset(
             'images/image_aj.png',
