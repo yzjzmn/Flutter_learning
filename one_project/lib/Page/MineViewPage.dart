@@ -8,8 +8,8 @@ class MineHomeViewPage extends StatefulWidget {
 class _MineHomeViewPageState extends State<MineHomeViewPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
+    return Container(
+      color: Colors.green,
     );
   }
 }

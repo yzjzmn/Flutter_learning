@@ -8,8 +8,8 @@ class MessageHomeViewPage extends StatefulWidget {
 class _MessageHomeViewPageState extends State<MessageHomeViewPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
+    return Container(
+      color: Colors.cyan,
     );
   }
 }
