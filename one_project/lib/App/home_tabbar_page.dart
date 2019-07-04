@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:one_project/Page/HomeMenuPage.dart';
-import 'package:one_project/Page/MessageHomePage.dart';
-import 'package:one_project/Page/MineViewPage.dart';
-import 'package:one_project/Page/FollowViewPage.dart';
+import 'package:one_project/Page/home_menu_page.dart';
+import 'package:one_project/Page/message_home_page.dart';
+import 'package:one_project/Page/mine_view_page.dart';
+import 'package:one_project/Page/follow_view_page.dart';
 
 import 'package:flutter/services.dart';
 
