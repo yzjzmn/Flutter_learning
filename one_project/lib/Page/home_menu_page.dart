@@ -1,44 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:flukit/flukit.dart';
-import 'package:video_player/video_player.dart';
+import 'package:one_project/Util/event_util.dart';
+import 'package:one_project/App/app_constant.dart';
+import 'package:one_project/Widget/video_widget.dart';
 
 class HomeMenuPage extends StatefulWidget {
+
+  static int firstInitTimes=1;
+
   @override
   _HomeMenuPageState createState() => _HomeMenuPageState();
 }
 
 class _HomeMenuPageState extends State<HomeMenuPage> {
-  VideoPlayerController _controller;
+  SwiperController _controller =SwiperController();
 
   void initState() {
     super.initState();
-    String videoUrl =     'https://wx3.sinaimg.cn/crop.0.0.604.339.360/006QmDx6ly1g2ia60z17lj30gs0b8q5u.jpg';
-    _controller = VideoPlayerController.network(
-        videoUrl)
-      ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        setState(() {});
-      });
+    _controller.addListener(() {
+      if (_controller.page.floor() ==_controller.page) {
+        eventUtil.emit(
+          EventVideoPlayPosition + _controller.page.floor().toString(),
+          _controller.page.floor(),
+        );
+      }
+    });
   }
 
   @override
   void dispose() {
     super.dispose();
-    _controller.dispose();
+    HomeMenuPage.firstInitTimes = 1;
   }
 
   @override
   Widget build(BuildContext context) {
+    // 创建20个视频数据  单双循环 本地数据
+    List<Widget> children = List.generate(20, (i) => buildVideoItem(i));
     return Scaffold(
-      body: Center(
-          child: _controller.value.initialized
-          // 加载成功
-          ? AspectRatio(
-            aspectRatio: _controller.value.aspectRatio,
-            child: VideoPlayer(_controller),
-            )
-          : Container(),
-        ),
-    );
+        body: Swiper(
+      autoStart: false,
+      circular: false,
+      direction: Axis.vertical,
+      children: children,
+      controller: _controller,
+    ));
   }
+
+  Widget buildVideoItem(int position) {
+    print(position.toString());
+    if (position % 2 == 0) {
+      return VideoWidget(
+        "images/video_1.mp4",
+        previewImgUrl: 'images/img_video_1.png',
+        positionTag: position,
+      );
+    } else {
+      return VideoWidget(
+        "images/video_2.mp4",
+        previewImgUrl: 'images/img_video_2.png',
+        positionTag: position,
+      );
+    }
+  }
+
 }

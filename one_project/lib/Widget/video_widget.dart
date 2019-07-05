@@ -3,7 +3,9 @@ import 'package:video_player/video_player.dart';
 import 'package:one_project/Util/event_util.dart';
 import 'package:one_project/App/app_constant.dart';
 import 'package:one_project/Util/screen.dart';
+import 'package:one_project/Page/home_menu_page.dart';
 
+// 类似于 OC的 .h文件  
 class VideoWidget extends StatefulWidget {
 
   final String url;
@@ -24,6 +26,7 @@ class VideoWidget extends StatefulWidget {
   _VideoWidgetState createState() => _VideoWidgetState();
 }
 
+// 类似于OC 的.m文件
 class _VideoWidgetState extends State<VideoWidget> {
     VideoPlayerController _controller;
   bool _hideActionButton = true;
@@ -46,7 +49,8 @@ class _VideoWidgetState extends State<VideoWidget> {
     _controller = VideoPlayerController.asset(widget.url)
       ..initialize()
       ..setLooping(true).then((_) {
-        if (widget.positionTag == 0) {
+        if (widget.positionTag == 0 && HomeMenuPage.firstInitTimes == 1) {
+          HomeMenuPage.firstInitTimes = 2;
           _controller.play();
           videoPrepared = true;
         }
@@ -82,7 +86,7 @@ class _VideoWidgetState extends State<VideoWidget> {
         children: <Widget>[
           Align(
             child: Container(
-                child: Image.asset('img/ic_playing.png'),
+                child: Image.asset('images/ic_playing.png'),
                 height: 50,
                 width: 50),
             alignment: Alignment.center,
