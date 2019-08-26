@@ -26,25 +26,26 @@ class _HomeTabbarPageState extends State<HomeTabbarPage> with SingleTickerProvid
 
   List<Widget> tabs = [
       _renderTab('首页'),
-      _renderTab('关注'),
-      _renderTab('消息'),
-      _renderTab('个人中心')
+      _renderTab('产品商城'),
+      _renderTab('购物车'),
+      _renderTab('我的')
   ];
 
   TabController _tabController;
 
-  void _onTabChange() {
-    if (this.mounted) {
-      this.setState(() {
-      });
-    }
-  }
+  // void _onTabChange() {
+  //   if (this.mounted) {
+  //     this.setState(() {
+  //     });
+  //   }
+  // }
 
   @override
   void initState() {
     super.initState();
     //这里创建_tabController的时候  设置length要和tabbars的个数相等,配置成对应的数组最好
-    _tabController = new TabController(initialIndex: 0, vsync: this, length: 4);
+    _tabController = TabController(initialIndex: 0, vsync: this, length: 4);
+
     // _tabController.addListener(() {
     //   if (_tabController.indexIsChanging) {
     //     _onTabChange();
@@ -67,10 +68,11 @@ class _HomeTabbarPageState extends State<HomeTabbarPage> with SingleTickerProvid
     
     SystemChrome.setSystemUIOverlayStyle(_style);
 
-    //默认不需要导航栏  仿造抖音主页
+    //默认不需要导航栏 
     return Scaffold(
       body: new TabBarView(
         controller: _tabController,
+        physics: BouncingScrollPhysics(parent: NeverScrollableScrollPhysics()),//配置是否可滚动
         children: <Widget>[
           new HomeMenuPage(),
           new FollowViewPage(),
@@ -101,7 +103,7 @@ class _HomeTabbarPageState extends State<HomeTabbarPage> with SingleTickerProvid
                 controller: _tabController,
                 indicatorSize: TabBarIndicatorSize.label,//指示器宽度样式
                 indicatorColor: Colors.white,//指示器的颜色
-                indicatorWeight: 3.0,//指示器的高度
+                indicatorWeight: 3.0,//指示器的高度,必须大于0.0
                 labelColor: Colors.white,//文字选中的颜色
                 labelStyle: TextStyle(fontSize: 16),
                 unselectedLabelColor: const Color(0xFF8E8E8E),
