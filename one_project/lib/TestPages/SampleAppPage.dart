@@ -12,8 +12,7 @@ class SampleAppPage extends StatefulWidget {
 // 在 Flutter 中，widgets 是不可变的，而且不能被直接更新。
 // 你需要去操纵 widget 的 state。
 
-// VSCode显示所有函数列表 shift+command+O
-
+// VSCode显示所有函数列表 shift+command+o
 
   @override
   _SampleAppPageState createState() => _SampleAppPageState();

@@ -4,6 +4,7 @@ import 'package:one_project/App/home_tabbar_page.dart';
 //下面是之前练习的时候写的page, 现在存在TestPage
 import 'package:one_project/TestPages/BuildViewPage.dart';
 import 'package:one_project/TestPages/ExampleUIPage.dart';
+import 'package:one_project/TestPages/SampleAppPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,9 +28,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      // 设置App的 rootVC
-      home: HomeTabbarPage(),
-
       /// 注册路由列表  只能在这里注册么?
       routes: {
         'MyHomePage':(context) => MyHomePage(),
@@ -44,6 +42,9 @@ class MyApp extends StatelessWidget {
       /// 缺点：不能直接传递路由参数,如果我们使用命名参数，就必须将路由提前注册到路由表中,所以就无法动态修改参数
 
       //设置不同homepage
+
+      // 设置App的 rootVC
+      home: HomeTabbarPage(),
 
       // home: MyHomePage(title: 'Yzj的第一个flutter程序'),
 

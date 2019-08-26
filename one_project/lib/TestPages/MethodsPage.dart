@@ -62,7 +62,7 @@ class Vector {
   
   /// Overrides - (a - b).
   Vector operator - (Vector v) {
-    return new Vector(x-v.x, y-v.y);
+    return Vector(x-v.x, y-v.y);
   }
 }
 
@@ -205,15 +205,15 @@ mainpOint() {
   assert(distance == 5);
 }
 
-
 ///////////////////////////////////
 ///   异步(Asynchrony support)  ///
 ///////////////////////////////////
 /// Dart 语言是目前少数几个支持异步操作的语言。
 /// 一般使用async函数和await表达式实现异步操作
 /// 'asynchronous '功能
-//  Dart 库提供asynchronous的功能
-//  该功能提供接口来进行耗费时间的操作，二调用的主代码不用等待耗时操作执行完成后才进行操作。该功能返回Future或Stream对象
+// Dart 库提供asynchronous的功能
+// 该功能提供接口来进行耗费时间的操作，二调用的主代码不用等待耗时操作执行完成后才进行操作。
+// 该功能返回Future或Stream对象
 
 // 可以通过如下的方式来获取asynchronous功能返回的Future对象的值。
 

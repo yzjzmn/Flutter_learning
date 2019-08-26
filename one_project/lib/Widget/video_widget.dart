@@ -49,8 +49,9 @@ class _VideoWidgetState extends State<VideoWidget> {
     _controller = VideoPlayerController.asset(widget.url)
       ..initialize()
       ..setLooping(true).then((_) {
-        if (widget.positionTag == 0 && HomeMenuPage.firstInitTimes == 1) {
-          HomeMenuPage.firstInitTimes = 2;
+        // if (widget.positionTag == 0 && HomeMenuPage.firstInitTimes == 1) {
+        //   HomeMenuPage.firstInitTimes = 2;
+        if (widget.positionTag == 0) {
           _controller.play();
           videoPrepared = true;
         }
