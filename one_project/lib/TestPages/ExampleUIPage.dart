@@ -94,7 +94,7 @@ class ExampleUIPage extends StatelessWidget {
             color:Colors.red[500]
           ),
 
-          new Text('666')
+          Text('666')
 
         ],
       ),

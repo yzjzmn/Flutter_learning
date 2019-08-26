@@ -46,7 +46,7 @@ class _BuildViewPageState extends State<BuildViewPage> {
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-        // TODO:布局问题
+        /// 布局问题
         /// 这里有问题, MaterialButton设置只height的话 多个button会有间隙 
         /// 通过设置padding设置 可以达到没有间隙,但是需要计算文字的高度,然而不同字体中英文高度不等,很难达到效果
         /// 暂时不知道怎么去处理这个问题

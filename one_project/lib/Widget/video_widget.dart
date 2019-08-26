@@ -3,7 +3,7 @@ import 'package:video_player/video_player.dart';
 import 'package:one_project/Util/event_util.dart';
 import 'package:one_project/App/app_constant.dart';
 import 'package:one_project/Util/screen.dart';
-import 'package:one_project/Page/home_menu_page.dart';
+import 'package:one_project/Page/andriod/home_menu_page.dart';
 
 // 类似于 OC的 .h文件  
 class VideoWidget extends StatefulWidget {

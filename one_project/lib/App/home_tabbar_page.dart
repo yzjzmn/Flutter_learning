@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:one_project/Page/home_menu_page.dart';
-import 'package:one_project/Page/message_home_page.dart';
-import 'package:one_project/Page/mine_view_page.dart';
-import 'package:one_project/Page/follow_view_page.dart';
+import 'package:one_project/Page/andriod/home_menu_page.dart';
+import 'package:one_project/Page/andriod/message_home_page.dart';
+import 'package:one_project/Page/andriod/follow_view_page.dart';
+import 'package:one_project/Page/andriod/mine_view_page.dart';
 
 import 'package:flutter/services.dart';
 
@@ -70,14 +70,14 @@ class _HomeTabbarPageState extends State<HomeTabbarPage> with SingleTickerProvid
 
     //默认不需要导航栏 
     return Scaffold(
-      body: new TabBarView(
+      body: TabBarView(
         controller: _tabController,
         physics: BouncingScrollPhysics(parent: NeverScrollableScrollPhysics()),//配置是否可滚动
         children: <Widget>[
-          new HomeMenuPage(),
-          new FollowViewPage(),
-          new MessageHomeViewPage(),
-          new MineHomeViewPage(),
+          HomeMenuPage(),
+          FollowViewPage(),
+          MessageHomeViewPage(),
+          MineHomeViewPage(),
         ],
       ),
 

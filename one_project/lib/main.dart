@@ -7,8 +7,10 @@ import 'package:one_project/App/home_tabbar_page.dart';
 //下面是之前练习的时候写的page, 现在存在TestPage
 import 'package:one_project/TestPages/BuildViewPage.dart';
 import 'package:one_project/TestPages/ExampleUIPage.dart';
-import 'package:one_project/TestPages/SampleAppPage.dart';
 import 'package:one_project/TestPages/AppleStylePage.dart';
+import 'package:one_project/App/ios_home_tabbar_page.dart';
+import 'package:one_project/TestPages/MethodsPage.dart';
+import 'package:one_project/TestPages/SampleAppPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,8 +23,14 @@ class MyApp extends StatelessWidget {
     if (Platform.isIOS) {
       return CupertinoApp(
         title: 'iOS App By Flutter',
-        // UI
-        home: AppleStyleViewController(),
+        
+        // 主题
+        theme: CupertinoThemeData(primaryColor: CupertinoColors.destructiveRed),
+        
+        // 配置 routes
+
+        // roots
+        home: TabbarViewController(),
       );
     }
 
