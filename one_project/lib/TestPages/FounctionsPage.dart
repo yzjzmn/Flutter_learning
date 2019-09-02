@@ -30,7 +30,7 @@ class _FounctionsPageState extends State<FounctionsPage> {
         
 
         floatingActionButton: FloatingActionButton(
-        onPressed: _fountionsAction(),//TODO: 命令行执行reload,自动调用_fountionsAction方法 暂时不知道原因
+        onPressed: _fountionsAction(),
         tooltip: 'Update Text',
         child: Icon(Icons.add),
       ),

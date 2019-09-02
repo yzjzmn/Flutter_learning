@@ -1,3 +1,8 @@
+
+// VSCode快捷键记录
+// 1.快速缩进 Ctrl + [  和 Ctrl + ]
+// 2.代码快速对齐,选中区域 Shift + all(option) + F][这个类似iOS command + i 很爽] 
+
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';

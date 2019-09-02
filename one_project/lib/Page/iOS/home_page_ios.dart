@@ -9,7 +9,7 @@ class _HomeViewControllerState extends State<HomeViewController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      color: CupertinoColors.activeGreen,
     );
   }
 }

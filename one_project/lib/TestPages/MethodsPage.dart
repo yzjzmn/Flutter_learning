@@ -93,7 +93,7 @@ mainVector() {
 abstract class AbstractContainer {
   // ...Define constructors, fields, methods...
 
-  void updateChildren(); // Abstract method.
+ void updateChildren(); // Abstract method.
 }
 
 class SpecializedContainer extends AbstractContainer {
@@ -112,6 +112,7 @@ class SpecializedContainer extends AbstractContainer {
 
 /// 扩展类(Extending a class)
 class Television {
+  var aaa;
   void turnOn() {
     // doSomething1();
     // doSomething2();
@@ -124,6 +125,7 @@ class Television {
 class SmartTelevision extends Television {
   void turnOn() {
     super.turnOn();
+    super.aaa = 123;
     // doSomething1();
     // doSomething2();
     // doSomething3();
@@ -151,8 +153,8 @@ List<Color> colors =Color.values;
 // 使用’mixins‘ 功能给类添加新的功能
 // mixins是一种方便重用一个类的代码的方法。
 // 使用with 关键字来实现mixins的功能。
-
 // with用法的实例
+// 类似于swift的面向协议
 /* 
 class Musician extends Performer with Musical {
   // ...
