@@ -94,8 +94,9 @@ dependencies:
   dio: ^1.0.13
   rxdart: ^0.22.0
   flukit: ^1.0.0
+  flutter_banner_swiper: ^0.1.4
 
-  #开发环境依赖的工具包（而不是flutter应用本身依赖的包）
+#开发环境依赖的工具包（而不是flutter应用本身依赖的包）
 dev_dependencies:
   flutter_test:
     sdk: flutter
