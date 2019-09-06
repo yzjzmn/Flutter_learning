@@ -18,7 +18,9 @@ class _HomeViewControllerState extends State<HomeViewController> {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
-        children: <Widget>[cycleScrollView()],
+        children: <Widget>[
+          cycleScrollView()
+          ],
       ),
     );
   }
@@ -35,7 +37,6 @@ class _HomeViewControllerState extends State<HomeViewController> {
       normalWidget: Container(
         width: 10,
         height: 10,
-        constraints: ,
         color: Colors.red,
       ), //自定义 选中指示器
       selectorWidget: Container(

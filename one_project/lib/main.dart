@@ -1,7 +1,7 @@
 
 // VSCode快捷键记录
 // 1.快速缩进 Ctrl + [  和 Ctrl + ]
-// 2.代码快速对齐,选中区域 Shift + all(option) + F][这个类似iOS command + i 很爽] 
+// 2.代码快速对齐,选中区域 Shift + all(option) + F][这个类似iOS control + i 很爽] 
 
 import 'dart:io';
 
@@ -16,6 +16,9 @@ import 'package:one_project/TestPages/AppleStylePage.dart';
 import 'package:one_project/App/ios_home_tabbar_page.dart';
 import 'package:one_project/TestPages/MethodsPage.dart';
 import 'package:one_project/TestPages/SampleAppPage.dart';
+
+//专门的语法学习
+import 'package:one_project/Learning/grammar_home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,7 +38,11 @@ class MyApp extends StatelessWidget {
         // 配置 routes
 
         // roots
-        home: TabbarViewController(),
+        // home: TabbarViewController(),
+
+        // 学习
+        home: GrammarHomePage(),
+
       );
     }
 
@@ -71,7 +78,7 @@ class MyApp extends StatelessWidget {
       //设置不同homepage
 
       // 设置App的 rootVC
-      home: HomeTabbarPage(),
+      // home: HomeTabbarPage(),
 
       // home: MyHomePage(title: 'Yzj的第一个flutter程序'),
 
@@ -82,7 +89,7 @@ class MyApp extends StatelessWidget {
       // home: FounctionsPage(),
 
       // UI
-      // home: BuildViewPage(),
+      home: BuildViewPage(),
 
     );
   }
