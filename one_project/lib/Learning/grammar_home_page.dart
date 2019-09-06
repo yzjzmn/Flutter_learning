@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:one_project/App/app_navgation.dart';
 import 'package:one_project/Util/screen.dart';
+import 'package:one_project/Learning/learn_variables.dart';
+import 'package:one_project/Learning/learn_function.dart';
 
 class GrammarHomePage extends StatefulWidget {
   @override
@@ -15,7 +18,7 @@ class _GrammarHomePageState extends State<GrammarHomePage> {
         constraints: BoxConstraints.expand(
           // 添加到child上额外的约束条件
           width: Screen.width,
-          height: Screen.navigationBarHeight + 200,
+          height: Screen.height,
         ),
         decoration: BoxDecoration(
           border: Border.all(width: 2.0, color: Colors.red),
@@ -34,8 +37,12 @@ class _GrammarHomePageState extends State<GrammarHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            creatButton('变量', () {}),
-            creatButton('函数', () {}),
+            creatButton('变量', () {
+              AppNavgation.push(context, LearnVariablesPage());
+            }),
+            creatButton('函数', () {
+              AppNavgation.push(context, LearnFunctionPage());
+            }),
           ],
         ),
         // transform: new Matrix4.rotationZ(-0.3), //设置container的变换矩阵，类型为Matrix4。
