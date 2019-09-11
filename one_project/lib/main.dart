@@ -28,23 +28,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    if (Platform.isIOS) {
-      return CupertinoApp(
-        title: 'iOS App By Flutter',
-        
-        // 主题
-        theme: CupertinoThemeData(primaryColor: CupertinoColors.destructiveRed),
-        
-        // 配置 routes
+    // if (Platform.isIOS) {
+    //   return CupertinoApp(
+    //     title: 'iOS App By Flutter',
+    //     // 主题
+    //     theme: CupertinoThemeData(primaryColor: CupertinoColors.destructiveRed),
+    //     // 配置 routes
 
-        // roots
-        // home: TabbarViewController(),
+    //     // roots
+    //     // home: TabbarViewController(),
 
-        // 学习
-        home: GrammarHomePage(),
-
-      );
-    }
+    //     // 学习
+    //     home: GrammarHomePage(),
+    //   );
+    // }
 
 
     return MaterialApp(

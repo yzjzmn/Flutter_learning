@@ -17,7 +17,7 @@ _renderTab(text) {
     child: new Column(
       mainAxisAlignment: MainAxisAlignment.center,
       //children可配置tabbar内容,目前只布局了文字
-      children: <Widget>[new Text(text)],
+      children: <Widget>[Text(text)],
     ),
   );
 }

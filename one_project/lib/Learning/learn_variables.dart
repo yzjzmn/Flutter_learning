@@ -13,6 +13,12 @@ class _LearnVariablesPageState extends State<LearnVariablesPage> {
       navigationBar: CupertinoNavigationBar(
         previousPageTitle: '',
         middle: Text('变量'),
+        trailing: CupertinoButton(
+          child: Text('按钮', style: TextStyle(color: Colors.red, fontSize: 13),),
+          onPressed: (){
+            testList();
+          },
+        ),
       ),
       child: ListView(
         children: <Widget>[cellItems1(), cellItems2()],
@@ -65,4 +71,13 @@ class _LearnVariablesPageState extends State<LearnVariablesPage> {
       ],
     );
   }
+
+
+  // function
+  testList() {
+    var list = [1,2,3];
+    list[1] = 1;
+    print(list);
+  }
+
 }
