@@ -1,9 +1,9 @@
-
 // VSCode快捷键记录
 // 1.快速缩进 Ctrl + [  和 Ctrl + ]
-// 2.代码快速对齐,选中区域 Shift + all(option) + F][这个类似iOS control + i 很爽] 
+// 2.代码快速对齐,选中区域 Shift + all(option) + F][这个类似iOS control + i 很爽]
 
 import 'dart:io';
+import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // if (Platform.isIOS) {
     //   return CupertinoApp(
     //     title: 'iOS App By Flutter',
@@ -42,7 +41,6 @@ class MyApp extends StatelessWidget {
     //     home: GrammarHomePage(),
     //   );
     // }
-
 
     return MaterialApp(
       title: 'Flutter Demo',
@@ -61,9 +59,9 @@ class MyApp extends StatelessWidget {
 
       /// 注册路由列表  只能在这里注册么?
       routes: {
-        'MyHomePage':(context) => MyHomePage(),
-        'BuildViewPage':(context)    => BuildViewPage(),
-        'ExampleUIPage':(context)    => ExampleUIPage(),
+        'MyHomePage': (context) => MyHomePage(),
+        'BuildViewPage': (context) => BuildViewPage(),
+        'ExampleUIPage': (context) => ExampleUIPage(),
       },
       // 通过路由名打开新路由页,要通过路由名称来打开新路由，可以使用：
       // Future pushNamed(BuildContext context, String routeName)
@@ -77,17 +75,16 @@ class MyApp extends StatelessWidget {
       // 设置App的 rootVC
       // home: HomeTabbarPage(),
 
-      // home: MyHomePage(title: 'Yzj的第一个flutter程序'),
+      home: MyHomePage(title: 'Yzj的第一个flutter程序'),
 
       // 基础语法
       // home: SampleAppPage(),
-      
+
       // Dart函数
       // home: FounctionsPage(),
 
       // UI
-      home: BuildViewPage(),
-
+      // home: BuildViewPage(),
     );
   }
 }
@@ -108,7 +105,6 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
-  
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -166,9 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                color: Colors.red),
+                  fontSize: 36, fontWeight: FontWeight.bold, color: Colors.red),
               //style: Theme.of(context).textTheme.display2,
             ),
           ],
@@ -185,4 +179,22 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+class CountBloc {
+  int _count;
+  StreamController<int> _countController;
 
+  CountBloc() {
+    _count = 0;
+    _countController = StreamController();
+  }
+
+  Stream<int> get value => _countController.stream;
+
+  increment() {
+    _countController.sink.add(++_count);
+  }
+
+  dispose() {
+    _countController.close();
+  }
+}

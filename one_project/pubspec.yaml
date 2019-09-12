@@ -96,6 +96,7 @@ dependencies:
   flukit: ^1.0.0
   flutter_banner_swiper: ^0.1.4
   flutter_redux: ^0.5.3
+  flutter_bloc: ^0.21.0
 
 #开发环境依赖的工具包（而不是flutter应用本身依赖的包）
 dev_dependencies:
