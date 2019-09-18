@@ -20,6 +20,10 @@ import 'package:one_project/TestPages/SampleAppPage.dart';
 //专门的语法学习
 import 'package:one_project/Learning/grammar_home_page.dart';
 
+//Example
+import 'package:one_project/bloc_scene.dart';
+
+// 正常的main函数
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -75,7 +79,7 @@ class MyApp extends StatelessWidget {
       // 设置App的 rootVC
       // home: HomeTabbarPage(),
 
-      home: MyHomePage(title: 'Yzj的第一个flutter程序'),
+      // home: MyHomePage(title: 'Yzj的第一个flutter程序'),
 
       // 基础语法
       // home: SampleAppPage(),
@@ -85,6 +89,9 @@ class MyApp extends StatelessWidget {
 
       // UI
       // home: BuildViewPage(),
+
+      // example
+      home: BlocSceneController(),
     );
   }
 }
